@@ -6,9 +6,6 @@
    60, // 60 seconds in 1 min
    60, // 60 mins in 1 hour
    24, // 24 hours in 1 day
-   7, // 7 days in 1 week
-   365 / 7 / 12, // 4.345238095238096 weeks in 1 month
-   12, // 12 months in 1 year
  ];
  
  /**
@@ -96,8 +93,8 @@
   * @param relativeDate
   * @returns {number}
   */
- export function diffSec(date: TDate, relativeDate: TDate): number {
-   const relDate = relativeDate ? toDate(relativeDate) : new Date();
+ export function diffSec(date: TDate): number {
+   const relDate = new Date();
    return (+relDate - +toDate(date)) / 1000;
  }
  

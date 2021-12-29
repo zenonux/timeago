@@ -6,12 +6,3 @@ export type TDate = Date | string | number;
 
 export type TimerPool = Record<number, number>;
 
-/**
- * render / format options
- */
-export type Opts = {
-  /** the relative date */
-  readonly relativeDate?: TDate;
-  /** the realtime */
-  readonly minInterval?: number;
-};
