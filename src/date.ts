@@ -36,15 +36,6 @@
   * @returns
   */
  export function formatDiff(diff: number, localeFunc: LocaleFunc): string {
-   /**
-    * if locale is not exist, use defaultLocale.
-    * if defaultLocale is not exist, use build-in `en`.
-    * be sure of no error when locale is not exist.
-    *
-    * If `time in`, then 1
-    * If `time ago`, then 0
-    */
-   const agoIn = diff < 0 ? 1 : 0;
  
    /**
     * Get absolute value of number (|diff| is non-negative) value of x
@@ -84,7 +75,7 @@
  
    if (diff > (idx === 0 ? 9 : 1)) idx += 1;
  
-   return localeFunc(diff, idx, totalSec)[agoIn].replace('%s', diff.toString());
+   return localeFunc(diff, idx, totalSec).replace('%s', diff.toString());
  }
  
  /**

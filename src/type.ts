@@ -1,4 +1,4 @@
-export type LocaleFunc = (diff: number, idx: number, totalSec?: number) => [string, string];
+export type LocaleFunc = (diff: number, idx: number, totalSec?: number) => string;
 
 export type LocaleMap = Record<string, LocaleFunc>;
 
