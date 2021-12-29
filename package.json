@@ -1,7 +1,7 @@
 {
   "name": "@urcloud/timeago",
   "version": "1.0.0",
-  "description": "timeago like douban & zhihu,support miniprogram.",
+  "description": "timeago like douban & zhihu.",
   "main": "lib/index.js",
   "publishConfig": {
     "access": "public"
