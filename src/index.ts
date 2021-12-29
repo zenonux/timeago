@@ -3,7 +3,7 @@ import {  TDate } from './type';
 
 const ZH_CN = ['秒', '分钟', '小时', '天', '周', '个月', '年'];
 
-export const format = (date: TDate): string => {
+ const timeago = (date: TDate): string => {
     // diff seconds
     const sec = diffSec(date);
 
@@ -14,3 +14,4 @@ export const format = (date: TDate): string => {
       return [`${diff} ${unit}前`, `${diff} ${unit}后`];
     });
   };
+  export default timeago
