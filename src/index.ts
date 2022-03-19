@@ -1,4 +1,3 @@
-
 export default function format(time: string | number | Date) {
   let date = toDate(time)
   let second = (new Date().getTime() - date.getTime()) / 1000,
@@ -7,13 +6,30 @@ export default function format(time: string | number | Date) {
     day = hour / 24,
     result = ''
 
-  if (day >= 2) result = formatDate(date)
-  else if (day >= 1) result = '昨天'+formatTime(date)
-  else if (hour >= 1) result = Math.floor(hour) +'小时前'
-  else if (minute >= 1) result =  Math.floor(minute) +'分钟前'
-  else if (second >= 9) result = Math.floor(second) +'秒前'
-  else  result = '刚刚'
+  if (isYesterday(date)) {
+    return '昨天' + formatTime(date)
+  } else if (day >= 1) {
+    result = formatDate(date)
+  } else if (hour >= 1) {
+    result = Math.floor(hour) + '小时前'
+  } else if (minute >= 1) {
+    result = Math.floor(minute) + '分钟前'
+  } else if (second >= 9) {
+    result = Math.floor(second) + '秒前'
+  } else {
+    result = '刚刚'
+  }
   return result
+}
+
+function isYesterday(date: Date) {
+  let yesterday = new Date()
+  yesterday.setDate(yesterday.getDate() - 1)
+  return (
+    date.getDate() === yesterday.getDate() &&
+    date.getMonth() === yesterday.getMonth() &&
+    date.getFullYear() === yesterday.getFullYear()
+  )
 }
 
 function toDate(input?: Date | string | number): Date {
@@ -32,19 +48,18 @@ function toDate(input?: Date | string | number): Date {
   return new Date(input)
 }
 
-function formatNumber  (n: any)  {
-  const s = n.toString();
-  return s[1] ? s : "0" + s;
+function formatNumber(n: any) {
+  const s = n.toString()
+  return s[1] ? s : '0' + s
 }
-function formatDate (date: Date)  {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return [year, month, day].map(formatNumber).join("-");
-};
-function formatTime (date: Date)  {
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  return [hour, minute].map(formatNumber).join(":");
-};
-
+function formatDate(date: Date) {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [year, month, day].map(formatNumber).join('-')
+}
+function formatTime(date: Date) {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  return [hour, minute].map(formatNumber).join(':')
+}
