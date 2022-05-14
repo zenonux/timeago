@@ -8,6 +8,14 @@ export const isYesterday = (date: Date) => {
   )
 }
 
+export const isToday = (date: Date) => {
+  return new Date().getTime() - date.getTime() < 86400000
+}
+
+export const isThisYear = (date: Date) => {
+  return date.getFullYear() === new Date().getFullYear()
+}
+
 export const toDate = (input?: Date | string | number): Date => {
   if (input instanceof Date) return input
   // @ts-ignore
@@ -34,8 +42,19 @@ export const formatDate = (date: Date) => {
   const day = date.getDate()
   return [year, month, day].map(formatNumber).join('-')
 }
+export const formatDateShort = (date: Date) => {
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [ month, day].map(formatNumber).join('-')
+}
 export const formatTime = (date: Date) => {
   const hour = date.getHours()
   const minute = date.getMinutes()
   return [hour, minute].map(formatNumber).join(':')
+}
+export const formatDateTime=(date:Date)=>{
+  return formatDate(date) + ' '+formatTime(date)
+}
+export const formatDateShortTime=(date:Date)=>{
+  return formatDateShort(date) + ' '+formatTime(date)
 }

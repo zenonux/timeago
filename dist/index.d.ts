@@ -1,3 +1,10 @@
-declare function format(time: string | number | Date): string;
+declare type FormatTypeBreak = {
+    label: string;
+    parse: (diffSeconds: number, date: Date, locale: string) => string;
+};
 
-export { format as default };
+declare const register: (type: string, breaks: FormatTypeBreak[]) => void;
+
+declare const format: (time: string | number | Date, type?: string, locale?: string) => string;
+
+export { format, register };

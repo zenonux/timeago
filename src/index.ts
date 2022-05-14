@@ -1,26 +1,16 @@
-import { formatDate, formatTime, isYesterday, toDate } from "./utils"
+import { register } from './register';
+import  {commonType} from './formatTypes/common'
+import  {commentType} from './formatTypes/comment'
+import  {msgDetailType} from './formatTypes/msg_detail'
+import  {msgListType} from './formatTypes/msg_list'
+import  {worksDetailType} from './formatTypes/works_detail'
 
-export default function format(time: string | number | Date) {
-  let date = toDate(time)
-  let second = (new Date().getTime() - date.getTime()) / 1000,
-    minute = second / 60,
-    hour = minute / 60,
-    day = hour / 24,
-    result = ''
+register('common', commonType);
+register('comment', commentType);
+register('msgDetail', msgDetailType);
+register('msgList', msgListType);
+register('worksDetail', worksDetailType);
 
-  if (isYesterday(date)) {
-    return '昨天' + formatTime(date)
-  } else if (day >= 1) {
-    result = formatDate(date)
-  } else if (hour >= 1) {
-    result = Math.floor(hour) + '小时前'
-  } else if (minute >= 1) {
-    result = Math.floor(minute) + '分钟前'
-  } else if (second >= 9) {
-    result = Math.floor(second) + '秒前'
-  } else {
-    result = '刚刚'
-  }
-  return result
-}
+export { format } from './format';
 
+export { register };
