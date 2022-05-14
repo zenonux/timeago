@@ -1,6 +1,6 @@
 import { getFormatType } from './register'
 import { FormatTypeBreak } from './type'
-import { formatDate, isThisYear, isToday, isYesterday, toDate } from './utils'
+import {  formatDateTime, isThisYear, isToday, isYesterday, toDate } from './utils'
 
 const handlers = {
   IN_5_MIN: (diffSeconds: number, date: Date) => {
@@ -44,9 +44,9 @@ export const format = (
   let diffSeconds = (new Date().getTime() - date.getTime()) / 1000
   let breaks: FormatTypeBreak[] = getFormatType(type)
   for (let i = 0; i < breaks.length; i++) {
-    if (handlers[breaks[i].label](diffSeconds, date)) {
+    if (handlers[breaks[i].label] && handlers[breaks[i].label](diffSeconds, date)) {
       return breaks[i].parse(diffSeconds, date, locale)
     }
   }
-  return formatDate(date)
+  return formatDateTime(date)
 }

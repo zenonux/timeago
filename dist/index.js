@@ -342,11 +342,11 @@ var format = (time, type = "common", locale = "zh_CN") => {
   let diffSeconds = (new Date().getTime() - date.getTime()) / 1e3;
   let breaks = getFormatType(type);
   for (let i = 0; i < breaks.length; i++) {
-    if (handlers[breaks[i].label](diffSeconds, date)) {
+    if (handlers[breaks[i].label] && handlers[breaks[i].label](diffSeconds, date)) {
       return breaks[i].parse(diffSeconds, date, locale);
     }
   }
-  return formatDate(date);
+  return formatDateTime(date);
 };
 
 // src/index.ts
