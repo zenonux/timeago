@@ -1,3 +1,5 @@
+import { formatDate, formatTime, isYesterday, toDate } from "./utils"
+
 export default function format(time: string | number | Date) {
   let date = toDate(time)
   let second = (new Date().getTime() - date.getTime()) / 1000,
@@ -22,44 +24,3 @@ export default function format(time: string | number | Date) {
   return result
 }
 
-function isYesterday(date: Date) {
-  let yesterday = new Date()
-  yesterday.setDate(yesterday.getDate() - 1)
-  return (
-    date.getDate() === yesterday.getDate() &&
-    date.getMonth() === yesterday.getMonth() &&
-    date.getFullYear() === yesterday.getFullYear()
-  )
-}
-
-function toDate(input?: Date | string | number): Date {
-  if (input instanceof Date) return input
-  // @ts-ignore
-  if (!isNaN(input) || /^\d+$/.test(input)) return new Date(parseInt(input))
-  input = (input || '')
-    // @ts-ignore
-    .trim()
-    .replace(/\.\d+/, '') // remove milliseconds
-    .replace(/-/, '/')
-    .replace(/-/, '/')
-    .replace(/(\d)T(\d)/, '$1 $2')
-    .replace(/Z/, ' UTC') // 2017-2-5T3:57:52Z -> 2017-2-5 3:57:52UTC
-    .replace(/([+-]\d\d):?(\d\d)/, ' $1$2') // -04:00 -> -0400
-  return new Date(input)
-}
-
-function formatNumber(n: any) {
-  const s = n.toString()
-  return s[1] ? s : '0' + s
-}
-function formatDate(date: Date) {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  return [year, month, day].map(formatNumber).join('-')
-}
-function formatTime(date: Date) {
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  return [hour, minute].map(formatNumber).join(':')
-}
