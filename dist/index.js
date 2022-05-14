@@ -148,6 +148,7 @@ var commentType = [
         en_US: "%sm ago"
       };
       let value = Math.floor(diffSeconds / 60);
+      value = value || 1;
       return locales[locale].replace(/%s/gi, value);
     }
   },
@@ -285,21 +286,13 @@ var worksDetailType = [
   {
     label: "IN_YEAR",
     parse: (diffSeconds, date, locale) => {
-      const locales = {
-        zh_CN: "%s",
-        en_US: "%s"
-      };
-      return locales[locale].replace(/%s/gi, formatDateShort(date));
+      return formatDateShort(date);
     }
   },
   {
     label: "IN_YEARS",
     parse: (diffSeconds, date, locale) => {
-      const locales = {
-        zh_CN: "%s",
-        en_US: "%s"
-      };
-      return locales[locale].replace(/%s/gi, formatDate(date));
+      return formatDate(date);
     }
   }
 ];

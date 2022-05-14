@@ -9,6 +9,7 @@ export const commentType = [
         en_US: '%sm ago',
       }
       let value = Math.floor(diffSeconds / 60)
+      value = value || 1 
       return locales[locale].replace(/%s/gi, value)
     },
   },
