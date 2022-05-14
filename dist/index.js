@@ -125,7 +125,7 @@ var commonType = [
     }
   },
   {
-    label: "IN_YEAR",
+    label: "IN_1_YEAR",
     parse: (diffSeconds, date, locale) => {
       return formatDateShort(date);
     }
@@ -184,7 +184,7 @@ var commentType = [
     }
   },
   {
-    label: "IN_YEAR",
+    label: "IN_1_YEAR",
     parse: (diffSeconds, date, locale) => {
       return formatDateShort(date);
     }
@@ -226,7 +226,7 @@ var msgDetailType = [
     }
   },
   {
-    label: "IN_YEAR",
+    label: "IN_1_YEAR",
     parse: (diffSeconds, date, locale) => {
       return formatDateShortTime(date);
     }
@@ -268,7 +268,7 @@ var msgListType = [
     }
   },
   {
-    label: "IN_YEAR",
+    label: "IN_1_YEAR",
     parse: (diffSeconds, date, locale) => {
       return formatDateShort(date);
     }
@@ -284,7 +284,7 @@ var msgListType = [
 // src/formatTypes/works_detail.ts
 var worksDetailType = [
   {
-    label: "IN_YEAR",
+    label: "IN_1_YEAR",
     parse: (diffSeconds, date, locale) => {
       return formatDateShort(date);
     }

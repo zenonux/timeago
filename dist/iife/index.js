@@ -100,7 +100,7 @@
       }
     },
     {
-      label: "IN_YEAR",
+      label: "IN_1_YEAR",
       parse: (diffSeconds, date, locale) => {
         return formatDateShort(date);
       }
@@ -159,7 +159,7 @@
       }
     },
     {
-      label: "IN_YEAR",
+      label: "IN_1_YEAR",
       parse: (diffSeconds, date, locale) => {
         return formatDateShort(date);
       }
@@ -201,7 +201,7 @@
       }
     },
     {
-      label: "IN_YEAR",
+      label: "IN_1_YEAR",
       parse: (diffSeconds, date, locale) => {
         return formatDateShortTime(date);
       }
@@ -243,7 +243,7 @@
       }
     },
     {
-      label: "IN_YEAR",
+      label: "IN_1_YEAR",
       parse: (diffSeconds, date, locale) => {
         return formatDateShort(date);
       }
@@ -259,7 +259,7 @@
   // src/formatTypes/works_detail.ts
   var worksDetailType = [
     {
-      label: "IN_YEAR",
+      label: "IN_1_YEAR",
       parse: (diffSeconds, date, locale) => {
         return formatDateShort(date);
       }

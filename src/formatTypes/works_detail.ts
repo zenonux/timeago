@@ -2,7 +2,7 @@ import { formatDate, formatDateShort } from "../utils"
 
 export const worksDetailType = [
   {
-    label: 'IN_YEAR',
+    label: 'IN_1_YEAR',
     parse: (diffSeconds: number, date: Date, locale: string) => {
       return formatDateShort(date)
     },

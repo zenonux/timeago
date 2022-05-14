@@ -28,7 +28,7 @@ export const msgDetailType = [
     },
   },
   {
-    label: 'IN_YEAR',
+    label: 'IN_1_YEAR',
     parse: (diffSeconds: number, date: Date, locale: string) => {
       return formatDateShortTime(date)
     },
