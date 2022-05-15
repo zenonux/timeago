@@ -1,6 +1,6 @@
-import { formatDate, formatDateShort, formatTime } from "../utils"
+import {  formatDateShortTime, formatDateTime, formatTime } from '../utils'
 
-export const msgListType = [
+export default  [
   {
     label: 'IN_5_MIN',
     parse: (diffSeconds: number, date: Date, locale: string) => {
@@ -30,13 +30,13 @@ export const msgListType = [
   {
     label: 'IN_1_YEAR',
     parse: (diffSeconds: number, date: Date, locale: string) => {
-      return formatDateShort(date)
+      return formatDateShortTime(date)
     },
   },
   {
     label: 'IN_YEARS',
     parse: (diffSeconds: number, date: Date, locale: string) => {
-      return formatDate(date)
+      return formatDateTime(date)
     },
   },
 ]

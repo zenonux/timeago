@@ -1,6 +1,6 @@
 import { formatDate, formatDateShort } from "../utils"
 
-export const worksDetailType = [
+export default  [
   {
     label: 'IN_1_YEAR',
     parse: (diffSeconds: number, date: Date, locale: string) => {

@@ -1,6 +1,6 @@
-import { formatDate, formatDateShort, formatDateShortTime, formatDateTime, formatTime } from '../utils'
+import { formatDate, formatDateShort, formatTime } from "../utils"
 
-export const msgDetailType = [
+export default   [
   {
     label: 'IN_5_MIN',
     parse: (diffSeconds: number, date: Date, locale: string) => {
@@ -21,22 +21,22 @@ export const msgDetailType = [
     label: 'IN_YESTERDAY',
     parse: (diffSeconds: number, date: Date, locale: string) => {
       const locales = {
-        zh_CN: '昨天 %s',
-        en_US: 'yday %s',
+        zh_CN: '昨天',
+        en_US: 'yday',
       }
-      return locales[locale].replace(/%s/gi, formatTime(date))
+      return locales[locale]
     },
   },
   {
     label: 'IN_1_YEAR',
     parse: (diffSeconds: number, date: Date, locale: string) => {
-      return formatDateShortTime(date)
+      return formatDateShort(date)
     },
   },
   {
     label: 'IN_YEARS',
     parse: (diffSeconds: number, date: Date, locale: string) => {
-      return formatDateTime(date)
+      return formatDate(date)
     },
   },
 ]

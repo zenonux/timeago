@@ -55,8 +55,8 @@
     return formatDateShort(date) + " " + formatTime(date);
   };
 
-  // src/formatTypes/common.ts
-  var commonType = [
+  // src/formatTypes/default.ts
+  var default_default = [
     {
       label: "IN_5_MIN",
       parse: (diffSeconds, date, locale) => {
@@ -113,8 +113,24 @@
     }
   ];
 
+  // src/formatTypes/detail.ts
+  var detail_default = [
+    {
+      label: "IN_1_YEAR",
+      parse: (diffSeconds, date, locale) => {
+        return formatDateShort(date);
+      }
+    },
+    {
+      label: "IN_YEARS",
+      parse: (diffSeconds, date, locale) => {
+        return formatDate(date);
+      }
+    }
+  ];
+
   // src/formatTypes/comment.ts
-  var commentType = [
+  var comment_default = [
     {
       label: "IN_1_HOUR",
       parse: (diffSeconds, date, locale) => {
@@ -172,8 +188,8 @@
     }
   ];
 
-  // src/formatTypes/msg_detail.ts
-  var msgDetailType = [
+  // src/formatTypes/chat.ts
+  var chat_default = [
     {
       label: "IN_5_MIN",
       parse: (diffSeconds, date, locale) => {
@@ -214,8 +230,8 @@
     }
   ];
 
-  // src/formatTypes/msg_list.ts
-  var msgListType = [
+  // src/formatTypes/message.ts
+  var message_default = [
     {
       label: "IN_5_MIN",
       parse: (diffSeconds, date, locale) => {
@@ -236,28 +252,12 @@
       label: "IN_YESTERDAY",
       parse: (diffSeconds, date, locale) => {
         const locales = {
-          zh_CN: "\u6628\u5929 %s",
-          en_US: "yday %s"
+          zh_CN: "\u6628\u5929",
+          en_US: "yday"
         };
-        return locales[locale].replace(/%s/gi, formatTime(date));
+        return locales[locale];
       }
     },
-    {
-      label: "IN_1_YEAR",
-      parse: (diffSeconds, date, locale) => {
-        return formatDateShort(date);
-      }
-    },
-    {
-      label: "IN_YEARS",
-      parse: (diffSeconds, date, locale) => {
-        return formatDate(date);
-      }
-    }
-  ];
-
-  // src/formatTypes/works_detail.ts
-  var worksDetailType = [
     {
       label: "IN_1_YEAR",
       parse: (diffSeconds, date, locale) => {
@@ -305,7 +305,7 @@
       return !isThisYear(date);
     }
   };
-  var format = (time, type = "common", locale = "zh_CN") => {
+  var format = (time, type = "default", locale = "zh_CN") => {
     let date = toDate(time);
     let diffSeconds = (new Date().getTime() - date.getTime()) / 1e3;
     let breaks = getFormatType(type);
@@ -318,9 +318,9 @@
   };
 
   // src/index.ts
-  register("common", commonType);
-  register("comment", commentType);
-  register("msgDetail", msgDetailType);
-  register("msgList", msgListType);
-  register("worksDetail", worksDetailType);
+  register("DEFAULT", default_default);
+  register("DETAIL", detail_default);
+  register("COMMENT", comment_default);
+  register("CHAT", chat_default);
+  register("MESSAGE", message_default);
 })();

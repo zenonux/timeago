@@ -1,6 +1,6 @@
 import { formatDate, formatDateShort, formatTime } from "../utils"
 
-export const commonType = [
+export default [
   {
     label: 'IN_5_MIN',
     parse: (diffSeconds: number, date: Date, locale: string) => {

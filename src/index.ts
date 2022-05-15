@@ -1,16 +1,16 @@
-import { register } from './register';
-import  {commonType} from './formatTypes/common'
-import  {commentType} from './formatTypes/comment'
-import  {msgDetailType} from './formatTypes/msg_detail'
-import  {msgListType} from './formatTypes/msg_list'
-import  {worksDetailType} from './formatTypes/works_detail'
+import { register } from './register'
+import defaultType from './formatTypes/default'
+import detailType from './formatTypes/detail'
+import commentType from './formatTypes/comment'
+import chatType from './formatTypes/chat'
+import messageType from './formatTypes/message'
 
-register('common', commonType);
-register('comment', commentType);
-register('msgDetail', msgDetailType);
-register('msgList', msgListType);
-register('worksDetail', worksDetailType);
+register('DEFAULT', defaultType)
+register('DETAIL', detailType)
+register('COMMENT', commentType)
+register('CHAT', chatType)
+register('MESSAGE', messageType)
 
-export { format } from './format';
+export { format } from './format'
 
-export { register };
+export { register }

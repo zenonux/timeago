@@ -37,7 +37,7 @@ const handlers = {
 
 export const format = (
   time: string | number | Date,
-  type = 'common',
+  type = 'default',
   locale = 'zh_CN'
 ) => {
   let date = toDate(time)

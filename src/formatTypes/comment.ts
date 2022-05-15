@@ -1,6 +1,6 @@
 import { formatDate, formatDateShort, formatTime } from "../utils"
 
-export const commentType = [
+export default [
   {
     label: 'IN_1_HOUR',
     parse: (diffSeconds: number, date: Date, locale: string) => {
