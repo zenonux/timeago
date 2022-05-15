@@ -304,7 +304,7 @@ var handlers = {
     return !isThisYear(date);
   }
 };
-var format = (time, type = "default", locale = "zh_CN") => {
+var format = (time, type = "DEFAULT", locale = "zh_CN") => {
   let date = toDate(time);
   let diffSeconds = (new Date().getTime() - date.getTime()) / 1e3;
   let breaks = getFormatType(type);
